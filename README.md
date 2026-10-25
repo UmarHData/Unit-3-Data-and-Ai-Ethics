@@ -8,7 +8,7 @@ The project follows an ETL, exploratory data analysis and machine learning proce
 
 ---
 ## Tableau Dashboard 
-https://public.tableau.com/views/Online-Retail-Transaction-Dashboard/OnlineRetailSalesPerformanceDashboard?:language=en-GB&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link
+https://public.tableau.com/views/Unit3-OnlineRetailSalesDashboard/OnlineRetailSalesPerformanceDashboard?:language=en-GB&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link
 
 ## Dataset Content
 
@@ -87,7 +87,20 @@ The raw dataset was kept unchanged while the cleaned dataset was exported separa
 
 The methods were selected because they provided a structured way to move from data cleaning to statistical analysis, visualisation and prediction.
 
+
 ---
+## Project Lifecycle Plan
+
+**Implementation:** I reused my Unit 2 project, reviewed the existing notebooks and updated the Tableau dashboard to communicate the findings more clearly. I also added data and ai ethics.
+
+**Evaluation:** I reviewed the analysis results, machine learning performance and dashboard visualisations to check that they met the business requirements.
+
+**Maintenance:** I would maintain this project by checking the quality of the data, update the analysis and refresh the dashboard if new data is available.
+
+**Updates:** I would improve the dashboard and documentation based on user feedback or changes to business requirements.
+
+**Review and Revision:** I reviewed the analysis and machine learning results and Tableau dashboard. I revised the dashboard by adding brief explanations to make the findings easier to understand. I also updated the README to include data and ai ethics and how the findings are communicated to different audiences.
+
 
 ## The rationale to map the business requirements to the Data Visualisations
 
@@ -127,6 +140,54 @@ Extreme values were investigated rather than automatically removed because some 
 One unusual Customer ID, **15287**, showed activity across several countries that was not representative of a typical individual customer. It was therefore excluded from the individual customer and machine learning analysis.
 
 Generative AI tools were used to support brainstorming, explaining code, improving markdowns and help troubleshoot code. All code and results were tested and reviewed within the project environment.
+
+---
+## Data Ethics, Privacy and Governance
+
+### Ethical Considerations
+
+I considered data quality, privacy and potential bias throughout the project. During ETL, I investigated missing product descriptions, duplicate transactions, negative quantities and unusual prices. I implemented this because incorrect data could lead to misleading sales figures and poor business decisions.
+
+I included returns in my analysis because they reduce net revenue. Excluding them would make the business appear to have earned more revenue than it actually did.
+
+### Data Privacy
+
+The dataset contains CustomerID, which I used to group customer purchases and analyse spending behaviour. Although the dataset does not include customer names, this does not mean the data is fully anonymous. Customers could potentially be identified if transaction details were combined with other information.
+
+The dataset contains CustomerID, which is pseudonymous rather than fully anonymous. Although customer names are not included, the ID allows individual purchases to be linked together, which could create privacy risks.
+
+To make the CustomerID anonymous, I would remove it and group transactions into summarised results, and check that individuals cannot reasonably be identified from the remaining data.
+
+My Tableau dashboard presents the overall results, such as revenue by country and product, rather than displaying individual customer IDs.
+
+### Bias and Fairness
+
+Most of the sales in the dataset came from the UK. This could lead to misleading conclusions because customer behaviour in the UK is different from other countries. For example, products that are popular in the UK might not be as popular internationally.
+
+### Data Governance
+
+I kept the original dataset separate from the cleaned dataset and documented my cleaning decisions in the ETL notebook. This made it easier to understand how the data was processed.
+
+I also organised the analysis into separate ETL, EDA and Machine Learning notebooks and saved the prediction results in a versioned output folder.
+
+## Legal and Social Implications 
+
+### Legal Implications
+
+The UK GDPR and Data Protection Act 2018 apply when handling personal data. Although the dataset is publicly available, this does not mean it is fully anonymous or free to reuse without restrictions.
+
+To reduce privacy risks, I would check the dataset's permissions, avoid sharing unnecessary customer information, use anonymised or summarised data where possible, and restrict access to customer records.
+
+
+### Social Implications
+
+Data analysis can affect how businesses treat their customers. For example, businesses might use spending predictions to decide which customers receive discounts or promotions.
+
+If the data contains errors or bias, some customers could be unfairly excluded from these offers.
+
+My machine learning model achieved an R² score of 0.450, meaning its predictions have limitations. Relying on these predictions alone could lead to unfair customer targeting.
+
+To reduce this risk, I would consider customers purchase history and check whether the model's predictions could lead to unfair treatment of certain customer groups.
 
 ---
 
@@ -191,6 +252,56 @@ The dashboard includes five main sections:
 
 The aim of the dashboard is to make the key results easy to understand at a glance. It allows users to quickly see overall sales performance, how revenue changes over time, which products perform best and which countries generate the most revenue.
 
+## Communicating Insights to Different Audiences
+
+I designed the Tableau dashboard to communicate the main findings clearly to both technical and non-technical audiences.
+
+### Non-Technical Audience
+
+For retail managers and other business users, I used easy to understand charts, KPI figures and short written explanations on tableau.
+
+The dashboard includes:
+
+- Net Revenue
+
+- Total Orders
+
+- Unique Customers
+
+- Average Order Value
+
+- Monthly Sales and Order Trends
+
+- Top 10 Products
+
+- Revenue by Country
+
+For example, the country revenue chart shows that the United Kingdom generates most of the business's revenue. This allows managers to understand the importance of the UK market without needing technical knowledge.
+
+
+### Technical Audience
+
+For data analysts and technical users, the ETL, EDA and Machine Learning notebooks provide more detailed information about the methods and results.
+
+These include:
+
+- Data cleaning and transformation steps.
+
+- Statistical hypothesis tests and p-values.
+
+- Machine learning features and model training.
+
+- Model evaluation using MAE, RMSE and R².
+
+For example, the Linear Regression model achieved an R² score of 0.450, meaning it explained approximately 45% of the variation in future customer spending in the test data.
+
+The model also achieved a Mean Absolute Error of £239.01, meaning its predictions differed from actual spending by approximately £239 per customer on average.
+
+### Communication Approach
+
+I used the Tableau dashboard to present the main business findings visually, while the notebooks and README provide the technical explanations.
+
+This allows non-technical users to understand the key results quickly and technical users to examine the methods, calculations and limitations behind those results.
 
 ## Project Limitations
 
@@ -253,7 +364,12 @@ Continue developing my skills in Python, statistics, machine learning and Tablea
 - Tableau - https://help.tableau.com/current/guides/get-started-tutorial/en-us/get-started-tutorial-home.htm
 - ChatGPT
 - Code Institute lms and the Code Institute README template.
-
+- Information Commissioner's Office (ICO) - https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-sharing/anonymisation/pseudonymisation/
+- ICO - https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-sharing/anonymisation/how-do-we-ensure-anonymisation-is-effective/
+- ICO - https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-protection-principles/a-guide-to-the-data-protection-principles/
+- UK Government - https://www.legislation.gov.uk/ukpga/2018/12/contents
+- ICO - https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/artificial-intelligence/guidance-on-ai-and-data-protection/how-do-we-ensure-fairness-in-ai/
+- UK Government - https://www.gov.uk/government/publications/data-ethics-framework/data-and-ai-ethics-framework
 ---
 
 ## Acknowledgements
